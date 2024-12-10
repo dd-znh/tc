@@ -12,7 +12,7 @@ class NQueensSatSolver:
         board = [[0 for j in range(self.n)] for i in range(self.n)]
         for i in range(self.n):
             for j in range(self.n):
-                board[i][j] = i*self.n + j + 1
+                board[i][j] = i * self.n + j + 1
         return board
 
     # Get the variables of the queens in the same row
@@ -21,26 +21,26 @@ class NQueensSatSolver:
 
     # Get the variables of the queens in the same column
     def _queens_in_column(self, j):
-       return [self.board[i][j] for i in range(self.n)]
+        return [self.board[i][j] for i in range(self.n)]
 
     # Get the variables of the queens in the same diagonal
     def _queens_in_diag(self, x, y):
         diag_vars = [self.board[x][y]]
         for i in range(self.n):
-            if x+i in range(self.n) and y+i in range(self.n):
-                diag_vars.append(self.board[x+i][y+i])
-            if x-i in range(self.n) and y-i in range(self.n):
-                diag_vars.append(self.board[x-i][y-i])
+            if x + i in range(self.n) and y + i in range(self.n):
+                diag_vars.append(self.board[x + i][y + i])
+            if x - i in range(self.n) and y - i in range(self.n):
+                diag_vars.append(self.board[x - i][y - i])
         return diag_vars
 
     # Get the variables of the queens in the same anti-diagonal
     def _queens_in_anti_diag(self, x, y):
         anti_diag_vars = [self.board[x][y]]
         for i in range(self.n):
-            if x+i in range(self.n) and y-i in range(self.n):
-                anti_diag_vars.append(self.board[x+i][y-i])
-            if x-i in range(self.n) and y+i in range(self.n):
-                anti_diag_vars.append(self.board[x-i][y+i])
+            if x + i in range(self.n) and y - i in range(self.n):
+                anti_diag_vars.append(self.board[x + i][y - i])
+            if x - i in range(self.n) and y + i in range(self.n):
+                anti_diag_vars.append(self.board[x - i][y + i])
         return anti_diag_vars
 
     # Get the variables of the queens that can be attacked by the queen at (x, y)
@@ -58,11 +58,13 @@ class NQueensSatSolver:
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_row(i))
             # print(f"Row clause: {self._queens_in_row(i)}")
+            # print(self.format_clauses_to_logic([self._queens_in_row(i)]))
 
         # Second set of clauses: There must be a queen in each column.
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_column(i))
             # print(f"Column clause: {self._queens_in_column(i)}")
+            # print(self.format_clauses_to_logic([self._queens_in_column(i)]))
 
         # Third set of clauses: No two queens can attack each other.
         for i in range(self.n):
@@ -70,7 +72,18 @@ class NQueensSatSolver:
                 for attacked in self._attacked_vars(i, j):
                     clause = [-self.board[i][j], -attacked]
                     self.solver.add_clause(clause)
-                    # print(f"Attack clause: {clause}")
+                    # print(f"Attacked clause: {clause}")
+                    # print(self.format_clauses_to_logic([clause]))
+
+    # Transform clauses into a logical formula
+    def format_clauses_to_logic(self, clauses):
+        logical_formulas = []
+        for clause in clauses:
+            formatted_clause = " ∨ ".join(
+                [f"x_{abs(var)}" if var > 0 else f"¬x_{abs(var)}" for var in clause]
+            )
+            logical_formulas.append(f"({formatted_clause})")
+        return logical_formulas
 
     # Answer the SAT problem
     def solve(self):
@@ -87,7 +100,7 @@ class NQueensSatSolver:
         for i in range(self.n):
             s = ""
             for j in range(self.n):
-                if self.solver.get_model()[self.board[i][j]-1] > 0:
+                if self.solver.get_model()[self.board[i][j] - 1] > 0:
                     s += "👑"
                 else:
                     s += "⬜" if (i + j) % 2 == 0 else "⬛"
@@ -96,6 +109,7 @@ class NQueensSatSolver:
 # Main
 if __name__ == "__main__":
     import sys
+
     n = int(sys.argv[1])
     solver = NQueensSatSolver(n)
     solver.solve()
