@@ -66,7 +66,9 @@ class NQueensSatSolver:
         for i in range(self.n):
             for j in range(self.n):
                 for attacked in self._attacked_vars(i, j):
-                    self.solver.add_clause([-self.board[i][j], -attacked])
+                    clause = [-self.board[i][j], -attacked]
+                    self.solver.add_clause(clause)
+                    # print(f"Attack clause: {clause}")
 
     # Answer the SAT problem
     def solve(self):
