@@ -58,22 +58,23 @@ class NQueensSatSolver:
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_row(i))
             # print(f"Row clause: {self._queens_in_row(i)}")
-            # print(self.format_clauses_to_logic([self._queens_in_row(i)]))
+            # print(f"Row clause: {self.format_clauses_to_logic([self._queens_in_row(i)])}")
 
         # Second set of clauses: There must be a queen in each column.
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_column(i))
             # print(f"Column clause: {self._queens_in_column(i)}")
-            # print(self.format_clauses_to_logic([self._queens_in_column(i)]))
+            # print(f"Column clause: {self.format_clauses_to_logic([self._queens_in_column(i)])}")
 
         # Third set of clauses: No two queens can attack each other.
         for i in range(self.n):
             for j in range(self.n):
+                # print(f"Posição: x = {i}, y = {j}")
                 for attacked in self._attacked_vars(i, j):
                     clause = [-self.board[i][j], -attacked]
                     self.solver.add_clause(clause)
                     # print(f"Attacked clause: {clause}")
-                    # print(self.format_clauses_to_logic([clause]))
+                    # print(f"Attacked clause: {self.format_clauses_to_logic([clause])}")
 
     # Transform clauses into a logical formula
     def format_clauses_to_logic(self, clauses):
