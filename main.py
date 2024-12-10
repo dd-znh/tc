@@ -1,29 +1,29 @@
 from pysat.solvers import Solver
+import sys
 
-# class NQueensSatSolver: n, board, solver
 class NQueensSatSolver:
     def __init__(self, n):
         self.n = n
         self.board = self._create_board()
         self.solver = Solver()
 
-    # Create a board of size n x n
     def _create_board(self):
         board = [[0 for j in range(self.n)] for i in range(self.n)]
         for i in range(self.n):
             for j in range(self.n):
                 board[i][j] = i * self.n + j + 1
+        print("Board:")
+        for i in range(self.n):
+            print(board[i])
+        print()
         return board
 
-    # Get the variables of the queens in the same row
     def _queens_in_row(self, i):
         return self.board[i]
 
-    # Get the variables of the queens in the same column
     def _queens_in_column(self, j):
         return [self.board[i][j] for i in range(self.n)]
 
-    # Get the variables of the queens in the same diagonal
     def _queens_in_diag(self, x, y):
         diag_vars = [self.board[x][y]]
         for i in range(self.n):
@@ -33,7 +33,6 @@ class NQueensSatSolver:
                 diag_vars.append(self.board[x - i][y - i])
         return diag_vars
 
-    # Get the variables of the queens in the same anti-diagonal
     def _queens_in_anti_diag(self, x, y):
         anti_diag_vars = [self.board[x][y]]
         for i in range(self.n):
@@ -43,7 +42,6 @@ class NQueensSatSolver:
                 anti_diag_vars.append(self.board[x - i][y + i])
         return anti_diag_vars
 
-    # Get the variables of the queens that can be attacked by the queen at (x, y)
     def _attacked_vars(self, x, y):
         s = set()
         s.update(self._queens_in_row(x))
@@ -54,39 +52,42 @@ class NQueensSatSolver:
         return s
 
     def create_clauses(self):
-        # First set of clauses: There must be a queen in each row.
+        print("Clauses:")
+        print()
+        print("First set of clauses: There must be a queen in each row.")
+        print()
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_row(i))
-            # print(f"Row clause: {self._queens_in_row(i)}")
-            # print(f"Row clause: {self.format_clauses_to_logic([self._queens_in_row(i)])}")
+            print(f"Row clause: {self.format_clauses_to_logic([self._queens_in_row(i)])}")
+        print()
 
-        # Second set of clauses: There must be a queen in each column.
+        print("Second set of clauses: There must be a queen in each column.")
+        print()
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_column(i))
-            # print(f"Column clause: {self._queens_in_column(i)}")
-            # print(f"Column clause: {self.format_clauses_to_logic([self._queens_in_column(i)])}")
+            print(f"Column clause: {self.format_clauses_to_logic([self._queens_in_column(i)])}")
+        print()
 
-        # Third set of clauses: No two queens can attack each other.
+        print("Third set of clauses: No two queens can attack each other.")
+        print()
         for i in range(self.n):
             for j in range(self.n):
-                # print(f"Posição: x = {i}, y = {j}")
+                print(f"Posição: x = {i}, y = {j}")
                 for attacked in self._attacked_vars(i, j):
                     clause = [-self.board[i][j], -attacked]
                     self.solver.add_clause(clause)
-                    # print(f"Attacked clause: {clause}")
-                    # print(f"Attacked clause: {self.format_clauses_to_logic([clause])}")
+                    print(f"Attacked clause: {self.format_clauses_to_logic([clause])}")
+                print()
 
-    # Transform clauses into a logical formula
     def format_clauses_to_logic(self, clauses):
         logical_formulas = []
         for clause in clauses:
             formatted_clause = " ∨ ".join(
-                [f"x_{abs(var)}" if var > 0 else f"¬x_{abs(var)}" for var in clause]
+                [f"{abs(var)}" if var > 0 else f"¬{abs(var)}" for var in clause]
             )
             logical_formulas.append(f"({formatted_clause})")
         return logical_formulas
 
-    # Answer the SAT problem
     def solve(self):
         self.create_clauses()
         if self.solver.solve():
@@ -95,7 +96,6 @@ class NQueensSatSolver:
         else:
             print("[UNSAT]", end=" ")
 
-    # Print the solution
     def print_model(self):
         print("Solution:")
         for i in range(self.n):
@@ -107,10 +107,11 @@ class NQueensSatSolver:
                     s += "⬜" if (i + j) % 2 == 0 else "⬛"
             print(s)
 
-# Main
 if __name__ == "__main__":
-    import sys
-
     n = int(sys.argv[1])
-    solver = NQueensSatSolver(n)
-    solver.solve()
+    output_file = f"{n}.txt"
+    with open(output_file, "w") as f:
+        sys.stdout = f
+        solver = NQueensSatSolver(n)
+        solver.solve()
+    sys.stdout = sys.__stdout__

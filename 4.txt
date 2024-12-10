@@ -1,0 +1,214 @@
+Board:
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+[13, 14, 15, 16]
+
+Clauses:
+
+First set of clauses: There must be a queen in each row.
+
+Row clause: ['(1 ∨ 2 ∨ 3 ∨ 4)']
+Row clause: ['(5 ∨ 6 ∨ 7 ∨ 8)']
+Row clause: ['(9 ∨ 10 ∨ 11 ∨ 12)']
+Row clause: ['(13 ∨ 14 ∨ 15 ∨ 16)']
+
+Second set of clauses: There must be a queen in each column.
+
+Column clause: ['(1 ∨ 5 ∨ 9 ∨ 13)']
+Column clause: ['(2 ∨ 6 ∨ 10 ∨ 14)']
+Column clause: ['(3 ∨ 7 ∨ 11 ∨ 15)']
+Column clause: ['(4 ∨ 8 ∨ 12 ∨ 16)']
+
+Third set of clauses: No two queens can attack each other.
+
+Posição: x = 0, y = 0
+Attacked clause: ['(¬1 ∨ ¬2)']
+Attacked clause: ['(¬1 ∨ ¬3)']
+Attacked clause: ['(¬1 ∨ ¬4)']
+Attacked clause: ['(¬1 ∨ ¬5)']
+Attacked clause: ['(¬1 ∨ ¬6)']
+Attacked clause: ['(¬1 ∨ ¬9)']
+Attacked clause: ['(¬1 ∨ ¬11)']
+Attacked clause: ['(¬1 ∨ ¬13)']
+Attacked clause: ['(¬1 ∨ ¬16)']
+
+Posição: x = 0, y = 1
+Attacked clause: ['(¬2 ∨ ¬1)']
+Attacked clause: ['(¬2 ∨ ¬3)']
+Attacked clause: ['(¬2 ∨ ¬4)']
+Attacked clause: ['(¬2 ∨ ¬5)']
+Attacked clause: ['(¬2 ∨ ¬6)']
+Attacked clause: ['(¬2 ∨ ¬7)']
+Attacked clause: ['(¬2 ∨ ¬10)']
+Attacked clause: ['(¬2 ∨ ¬12)']
+Attacked clause: ['(¬2 ∨ ¬14)']
+
+Posição: x = 0, y = 2
+Attacked clause: ['(¬3 ∨ ¬1)']
+Attacked clause: ['(¬3 ∨ ¬2)']
+Attacked clause: ['(¬3 ∨ ¬4)']
+Attacked clause: ['(¬3 ∨ ¬6)']
+Attacked clause: ['(¬3 ∨ ¬7)']
+Attacked clause: ['(¬3 ∨ ¬8)']
+Attacked clause: ['(¬3 ∨ ¬9)']
+Attacked clause: ['(¬3 ∨ ¬11)']
+Attacked clause: ['(¬3 ∨ ¬15)']
+
+Posição: x = 0, y = 3
+Attacked clause: ['(¬4 ∨ ¬1)']
+Attacked clause: ['(¬4 ∨ ¬2)']
+Attacked clause: ['(¬4 ∨ ¬3)']
+Attacked clause: ['(¬4 ∨ ¬7)']
+Attacked clause: ['(¬4 ∨ ¬8)']
+Attacked clause: ['(¬4 ∨ ¬10)']
+Attacked clause: ['(¬4 ∨ ¬12)']
+Attacked clause: ['(¬4 ∨ ¬13)']
+Attacked clause: ['(¬4 ∨ ¬16)']
+
+Posição: x = 1, y = 0
+Attacked clause: ['(¬5 ∨ ¬1)']
+Attacked clause: ['(¬5 ∨ ¬2)']
+Attacked clause: ['(¬5 ∨ ¬6)']
+Attacked clause: ['(¬5 ∨ ¬7)']
+Attacked clause: ['(¬5 ∨ ¬8)']
+Attacked clause: ['(¬5 ∨ ¬9)']
+Attacked clause: ['(¬5 ∨ ¬10)']
+Attacked clause: ['(¬5 ∨ ¬13)']
+Attacked clause: ['(¬5 ∨ ¬15)']
+
+Posição: x = 1, y = 1
+Attacked clause: ['(¬6 ∨ ¬1)']
+Attacked clause: ['(¬6 ∨ ¬2)']
+Attacked clause: ['(¬6 ∨ ¬3)']
+Attacked clause: ['(¬6 ∨ ¬5)']
+Attacked clause: ['(¬6 ∨ ¬7)']
+Attacked clause: ['(¬6 ∨ ¬8)']
+Attacked clause: ['(¬6 ∨ ¬9)']
+Attacked clause: ['(¬6 ∨ ¬10)']
+Attacked clause: ['(¬6 ∨ ¬11)']
+Attacked clause: ['(¬6 ∨ ¬14)']
+Attacked clause: ['(¬6 ∨ ¬16)']
+
+Posição: x = 1, y = 2
+Attacked clause: ['(¬7 ∨ ¬2)']
+Attacked clause: ['(¬7 ∨ ¬3)']
+Attacked clause: ['(¬7 ∨ ¬4)']
+Attacked clause: ['(¬7 ∨ ¬5)']
+Attacked clause: ['(¬7 ∨ ¬6)']
+Attacked clause: ['(¬7 ∨ ¬8)']
+Attacked clause: ['(¬7 ∨ ¬10)']
+Attacked clause: ['(¬7 ∨ ¬11)']
+Attacked clause: ['(¬7 ∨ ¬12)']
+Attacked clause: ['(¬7 ∨ ¬13)']
+Attacked clause: ['(¬7 ∨ ¬15)']
+
+Posição: x = 1, y = 3
+Attacked clause: ['(¬8 ∨ ¬3)']
+Attacked clause: ['(¬8 ∨ ¬4)']
+Attacked clause: ['(¬8 ∨ ¬5)']
+Attacked clause: ['(¬8 ∨ ¬6)']
+Attacked clause: ['(¬8 ∨ ¬7)']
+Attacked clause: ['(¬8 ∨ ¬11)']
+Attacked clause: ['(¬8 ∨ ¬12)']
+Attacked clause: ['(¬8 ∨ ¬14)']
+Attacked clause: ['(¬8 ∨ ¬16)']
+
+Posição: x = 2, y = 0
+Attacked clause: ['(¬9 ∨ ¬1)']
+Attacked clause: ['(¬9 ∨ ¬3)']
+Attacked clause: ['(¬9 ∨ ¬5)']
+Attacked clause: ['(¬9 ∨ ¬6)']
+Attacked clause: ['(¬9 ∨ ¬10)']
+Attacked clause: ['(¬9 ∨ ¬11)']
+Attacked clause: ['(¬9 ∨ ¬12)']
+Attacked clause: ['(¬9 ∨ ¬13)']
+Attacked clause: ['(¬9 ∨ ¬14)']
+
+Posição: x = 2, y = 1
+Attacked clause: ['(¬10 ∨ ¬2)']
+Attacked clause: ['(¬10 ∨ ¬4)']
+Attacked clause: ['(¬10 ∨ ¬5)']
+Attacked clause: ['(¬10 ∨ ¬6)']
+Attacked clause: ['(¬10 ∨ ¬7)']
+Attacked clause: ['(¬10 ∨ ¬9)']
+Attacked clause: ['(¬10 ∨ ¬11)']
+Attacked clause: ['(¬10 ∨ ¬12)']
+Attacked clause: ['(¬10 ∨ ¬13)']
+Attacked clause: ['(¬10 ∨ ¬14)']
+Attacked clause: ['(¬10 ∨ ¬15)']
+
+Posição: x = 2, y = 2
+Attacked clause: ['(¬11 ∨ ¬1)']
+Attacked clause: ['(¬11 ∨ ¬3)']
+Attacked clause: ['(¬11 ∨ ¬6)']
+Attacked clause: ['(¬11 ∨ ¬7)']
+Attacked clause: ['(¬11 ∨ ¬8)']
+Attacked clause: ['(¬11 ∨ ¬9)']
+Attacked clause: ['(¬11 ∨ ¬10)']
+Attacked clause: ['(¬11 ∨ ¬12)']
+Attacked clause: ['(¬11 ∨ ¬14)']
+Attacked clause: ['(¬11 ∨ ¬15)']
+Attacked clause: ['(¬11 ∨ ¬16)']
+
+Posição: x = 2, y = 3
+Attacked clause: ['(¬12 ∨ ¬2)']
+Attacked clause: ['(¬12 ∨ ¬4)']
+Attacked clause: ['(¬12 ∨ ¬7)']
+Attacked clause: ['(¬12 ∨ ¬8)']
+Attacked clause: ['(¬12 ∨ ¬9)']
+Attacked clause: ['(¬12 ∨ ¬10)']
+Attacked clause: ['(¬12 ∨ ¬11)']
+Attacked clause: ['(¬12 ∨ ¬15)']
+Attacked clause: ['(¬12 ∨ ¬16)']
+
+Posição: x = 3, y = 0
+Attacked clause: ['(¬13 ∨ ¬1)']
+Attacked clause: ['(¬13 ∨ ¬4)']
+Attacked clause: ['(¬13 ∨ ¬5)']
+Attacked clause: ['(¬13 ∨ ¬7)']
+Attacked clause: ['(¬13 ∨ ¬9)']
+Attacked clause: ['(¬13 ∨ ¬10)']
+Attacked clause: ['(¬13 ∨ ¬14)']
+Attacked clause: ['(¬13 ∨ ¬15)']
+Attacked clause: ['(¬13 ∨ ¬16)']
+
+Posição: x = 3, y = 1
+Attacked clause: ['(¬14 ∨ ¬2)']
+Attacked clause: ['(¬14 ∨ ¬6)']
+Attacked clause: ['(¬14 ∨ ¬8)']
+Attacked clause: ['(¬14 ∨ ¬9)']
+Attacked clause: ['(¬14 ∨ ¬10)']
+Attacked clause: ['(¬14 ∨ ¬11)']
+Attacked clause: ['(¬14 ∨ ¬13)']
+Attacked clause: ['(¬14 ∨ ¬15)']
+Attacked clause: ['(¬14 ∨ ¬16)']
+
+Posição: x = 3, y = 2
+Attacked clause: ['(¬15 ∨ ¬3)']
+Attacked clause: ['(¬15 ∨ ¬5)']
+Attacked clause: ['(¬15 ∨ ¬7)']
+Attacked clause: ['(¬15 ∨ ¬10)']
+Attacked clause: ['(¬15 ∨ ¬11)']
+Attacked clause: ['(¬15 ∨ ¬12)']
+Attacked clause: ['(¬15 ∨ ¬13)']
+Attacked clause: ['(¬15 ∨ ¬14)']
+Attacked clause: ['(¬15 ∨ ¬16)']
+
+Posição: x = 3, y = 3
+Attacked clause: ['(¬16 ∨ ¬1)']
+Attacked clause: ['(¬16 ∨ ¬4)']
+Attacked clause: ['(¬16 ∨ ¬6)']
+Attacked clause: ['(¬16 ∨ ¬8)']
+Attacked clause: ['(¬16 ∨ ¬11)']
+Attacked clause: ['(¬16 ∨ ¬12)']
+Attacked clause: ['(¬16 ∨ ¬13)']
+Attacked clause: ['(¬16 ∨ ¬14)']
+Attacked clause: ['(¬16 ∨ ¬15)']
+
+[SAT] 
+Solution:
+⬜⬛👑⬛
+👑⬜⬛⬜
+⬜⬛⬜👑
+⬛👑⬛⬜

@@ -1,0 +1,20 @@
+Board:
+[1]
+
+Clauses:
+
+First set of clauses: There must be a queen in each row.
+
+Row clause: ['(1)']
+
+Second set of clauses: There must be a queen in each column.
+
+Column clause: ['(1)']
+
+Third set of clauses: No two queens can attack each other.
+
+Posição: x = 0, y = 0
+
+[SAT] 
+Solution:
+👑
