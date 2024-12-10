@@ -57,10 +57,12 @@ class NQueensSatSolver:
         # First set of clauses: There must be a queen in each row.
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_row(i))
+            # print(f"Row clause: {self._queens_in_row(i)}")
 
         # Second set of clauses: There must be a queen in each column.
         for i in range(self.n):
             self.solver.add_clause(self._queens_in_column(i))
+            # print(f"Column clause: {self._queens_in_column(i)}")
 
         # Third set of clauses: No two queens can attack each other.
         for i in range(self.n):
